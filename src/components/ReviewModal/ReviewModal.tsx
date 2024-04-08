@@ -1,22 +1,24 @@
 import React, { useState } from 'react';
 import { PiStarFill } from 'react-icons/pi';
 import Modal from 'react-modal';
-import { toast, ToastContainer } from 'react-toastify';
-
-import 'react-toastify/dist/ReactToastify.css';
 
 import Button from '@/components/buttons/Button';
 import Checkbox from '@/components/input/checkbox';
+import SuccessModal from '@/components/successModal/successModal';
 
 import Amenities from '@/app/(authenticated)/home/_components/amenities';
 
 import { ResponseProps } from './type';
 
 const Review: React.FC<ResponseProps> = ({ handleCloseModal, isOpen }) => {
+  const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false);
   const [rating, setRating] = useState<number>(0);
   const [reviewText, setReviewText] = useState<string>('');
   const [anonymousChecked, setAnonymousChecked] = useState<boolean>(false);
 
+  const toggleSuccessModal = () => {
+    setIsSuccessModalOpen(!isSuccessModalOpen);
+  };
   const handleClick = (index: number) => {
     setRating(index + 1);
   };
@@ -27,18 +29,7 @@ const Review: React.FC<ResponseProps> = ({ handleCloseModal, isOpen }) => {
 
   const handleSubmit = () => {
     // Handle submit logic here
-    // For demonstration, we'll just show a toast message
-    toast.success('Review Submitted', {
-      style: {
-        color: '#28a745',
-        border: '1px solid #28a745',
-        padding: '1px 8px',
-        textAlign: 'center',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-      },
-    });
+    toggleSuccessModal();
     handleCloseModal();
   };
 
@@ -144,16 +135,10 @@ const Review: React.FC<ResponseProps> = ({ handleCloseModal, isOpen }) => {
           </div>
         </div>
       </Modal>
-      <ToastContainer
-        position='top-center'
-        autoClose={3000} // Duration for which the toast message will be displayed
-        hideProgressBar={true} // Show or hide the progress bar
-        newestOnTop={false} // Display newest toast messages on top
-        closeOnClick // Close toast message on click
-        rtl={false} // Set to true for languages that are read right-to-left
-        pauseOnFocusLoss // Pause toast timer when the window loses focus
-        draggable // Allow users to drag the toast message
-        pauseOnHover // Pause toast timer when hovered
+
+      <SuccessModal
+        isOpen={isSuccessModalOpen}
+        handleCloseModal={toggleSuccessModal}
       />
     </div>
   );
