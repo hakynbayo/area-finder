@@ -22,7 +22,7 @@ const ReviewImages: React.FC = () => {
   };
 
   return (
-    <div className='w-full flex sm:grid sm:grid-cols-2 grid-rows-2 gap-2 sm:gap-4'>
+    <div className='w-full z-0 flex sm:grid sm:grid-cols-2 grid-rows-2 gap-2 sm:gap-4'>
       {images.map((imageUrl, index) => (
         <div key={index}>
           <Image

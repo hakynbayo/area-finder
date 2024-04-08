@@ -18,7 +18,7 @@ const Page = () => {
             <Reviews />
           </Suspense>
         </div>
-        <div className='w-[40%]'>
+        <div className='w-full md:w-[40%]'>
           <Suspense fallback={<div>Loading...</div>}>
             <ReviewImages />
           </Suspense>

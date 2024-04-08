@@ -3,12 +3,12 @@
   "short_name": "Area-finder",
   "icons": [
     {
-      "src": "/svg/Logo.svg",
+      "src": "/svg/arealogo.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "/svg/Logo.svg",
+      "src": "/svg/arealogo.png",
       "sizes": "512x512",
       "type": "image/png"
     }
