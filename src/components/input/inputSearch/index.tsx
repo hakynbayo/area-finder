@@ -98,7 +98,7 @@ const InputSearch = ({
       />
 
       {isLoading && (
-        <div className='text-blue bg-black absolute right-6 top-1/2 -translate-y-1/2'>
+        <div className='text-blue bg-light-blue absolute right-6 top-1/2 -translate-y-1/2'>
           <ImSpinner2 className='animate-spin' />
         </div>
       )}

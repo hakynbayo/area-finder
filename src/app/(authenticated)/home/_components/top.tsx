@@ -45,8 +45,7 @@ const Top = () => {
   };
 
   // Access location parameter on client-side only
-  const address =
-    typeof window !== 'undefined' ? window.location.search.split('=')[1] : '';
+  const address = window.location.search.split('=')[1];
   const UrlParams = new URLSearchParams(address);
 
   return (
@@ -54,7 +53,7 @@ const Top = () => {
       <div className='w-full h-full flex flex-col gap-4'>
         <div className='flex flex-col lg:flex-row justify-between gap-4'>
           <div>
-            <h1 className='text-xl md:text-3xl font-medium text-black'>
+            <h1 className='text-xl md:text-3xl capitalize font-medium text-black'>
               {UrlParams}
             </h1>
             <p className='text-sm md:text-base text-black'>

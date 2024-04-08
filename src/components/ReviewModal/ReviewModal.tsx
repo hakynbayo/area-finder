@@ -41,8 +41,7 @@ const Review: React.FC<ResponseProps> = ({ handleCloseModal, isOpen }) => {
     handleCloseModal();
   };
 
-  const address =
-    typeof window !== 'undefined' ? window.location.search.split('=')[1] : '';
+  const address = window.location.search.split('=')[1];
   const UrlParams = new URLSearchParams(address);
 
   return (
