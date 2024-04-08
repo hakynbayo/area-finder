@@ -68,7 +68,7 @@ const Card = () => {
       {/* Hide the div below when not expanded */}
       {isExpanded && (
         <div className='lg:w-[630px] sm:w-full w-full h-[120px] md:h-[210px] relative bg-[#F3F7FE] border rounded-md lg:absolute sm:flex-row p-4 overflow-y-auto'>
-          <div className='grid grid-cols-1 sm:grid-cols-5 gap-4'>
+          <div className='grid grid-cols-1 sm:grid-cols-5 gap-4 '>
             {amenities.map((amenity, index) => (
               <div
                 key={index}
@@ -79,9 +79,12 @@ const Card = () => {
                   id={`item-${index}`}
                   checked={checkedItems[index]}
                   onChange={() => handleCheckboxChange(index)}
-                  className='h-4 w-4 border border-gray-300 bg-[#F3F7FE] rounded-sm focus:ring-[#F3F7FE]'
+                  className='h-4 w-4 border border-gray-300 bg-[#F3F7FE] cursor-pointer rounded-sm focus:ring-[#F3F7FE]'
                 />
-                <label htmlFor={`item-${index}`} className='ml-2'>
+                <label
+                  htmlFor={`item-${index}`}
+                  className='ml-2 cursor-pointer'
+                >
                   {amenity}
                 </label>
               </div>

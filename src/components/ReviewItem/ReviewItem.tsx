@@ -35,7 +35,7 @@ const Reviews: React.FC = () => {
 
   return (
     <div
-      className='w-full mb-6 flex flex-col bg-white h-max px-4  gap-2 cursor-pointer'
+      className='w-full mb-6 flex flex-col bg-white h-max px-0 sm:px-4 gap-2 cursor-pointer'
       onClick={toggleCommentVisibility}
     >
       <div className='flex justify-between items-center'>

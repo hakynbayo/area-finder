@@ -12,7 +12,7 @@ const Page = () => {
       <Suspense fallback={<div>Loading...</div>}>
         <Top />
       </Suspense>
-      <div className='flex flex-col md:flex-row gap-4 w-full px-12 md:px-8 lg:px-28'>
+      <div className='flex flex-col-reverse md:flex-row gap-4 w-full px-12 md:px-8 lg:px-28'>
         <div className='flex w-full md:w-[75%] '>
           <Suspense fallback={<div>Loading...</div>}>
             <Reviews />

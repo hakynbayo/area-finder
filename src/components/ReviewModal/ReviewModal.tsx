@@ -5,9 +5,10 @@ import { toast, ToastContainer } from 'react-toastify';
 
 import 'react-toastify/dist/ReactToastify.css';
 
-import Amenities from '@/components/amenities/amenities';
 import Button from '@/components/buttons/Button';
 import Checkbox from '@/components/input/checkbox';
+
+import Amenities from '@/app/(authenticated)/home/_components/amenities';
 
 import { ResponseProps } from './type';
 
