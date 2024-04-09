@@ -49,14 +49,14 @@ const Top = () => {
   const UrlParams = new URLSearchParams(address);
 
   return (
-    <div className='fixed top-10 md:top-24 z-10 mb-10 flex w-full items-center justify-between bg-[#F2F6FD] px-6 py-4 backdrop-blur-lg backdrop-filter sm:px-10 lg:px-16 xl:px-28'>
+    <div className='fixed top-20 md:top-24 z-10 flex w-full bg-white md:bg-[#F2F6FD] items-center justify-between px-4 pt-6 sm:pt-10 lg:pt-4 pb-2 md:py-6 backdrop-blur-lg backdrop-filter sm:px-4 lg:px-16 xl:px-28'>
       <div className='w-full h-full flex flex-col gap-4'>
-        <div className='flex flex-col lg:flex-row justify-between gap-4'>
-          <div>
-            <h1 className='text-xl md:text-3xl capitalize font-medium text-black'>
+        <div className='flex flex-col md:flex-row justify-between gap-4'>
+          <div className='flex flex-col gap-4'>
+            <h1 className='text-base md:text-3xl capitalize font-medium text-black'>
               {UrlParams}
             </h1>
-            <p className='text-sm md:text-base text-black'>
+            <p className='text-xs md:text-base text-black'>
               {' '}
               <span className='font-semibold'>"450"</span> Reviews{' '}
               <span className='font-normal'>
@@ -64,44 +64,52 @@ const Top = () => {
               </span>
             </p>
           </div>
-          <div className=' flex justify-between lg:justify-start lg:items-center gap-4'>
-            <div>
-              <Button
-                onClick={toggleReviewModal}
-                className='bg-blue py-4 px-8 rounded-md'
-              >
-                <span className='text-sm xl:text-base'> Leave Review </span>
-              </Button>
-              <ReviewModal
-                isOpen={isReviewModalOpen}
-                handleCloseModal={toggleReviewModal}
-              />
+          <div className='flex flex-col gap-4'>
+            <div
+              className='w-[1160px] block md:hidden no-scrollbar overflow-x-auto'
+              ref={containerRef}
+            >
+              <Tags />
             </div>
-            <div className='flex gap-2'>
-              <Button className='border border-blue p-4 bg-transparent hover:bg-transparent rounded-md'>
-                <Image
-                  src='/svg/icon.svg'
-                  className='relative'
-                  alt='dele'
-                  width={20}
-                  height={20}
+            <div className='w-full flex md:flex-col lg:flex-row justify-between md:justify-start lg:items-center gap-2 md:gap-4'>
+              <div className='w-[50%]'>
+                <Button
+                  onClick={toggleReviewModal}
+                  className='bg-blue py-4 px-10 md:px-6 rounded-md whitespace-nowrap'
+                >
+                  <span className='text-sm xl:text-base'> Leave Review </span>
+                </Button>
+                <ReviewModal
+                  isOpen={isReviewModalOpen}
+                  handleCloseModal={toggleReviewModal}
                 />
-              </Button>
+              </div>
+              <div className='w-[50] flex gap-4 sm:gap-2'>
+                <Button className='border border-blue py-4 px-6 bg-transparent hover:bg-transparent rounded-md'>
+                  <Image
+                    src='/svg/icon.svg'
+                    className='relative'
+                    alt='dele'
+                    width={20}
+                    height={20}
+                  />
+                </Button>
 
-              <Button className='border border-blue p-4 bg-transparent hover:bg-transparent rounded-md'>
-                <Image
-                  src='/svg/share.svg'
-                  className='relative'
-                  alt='dele'
-                  width={20}
-                  height={20}
-                />
-              </Button>
+                <Button className='border border-blue py-4 px-6 bg-transparent hover:bg-transparent rounded-md'>
+                  <Image
+                    src='/svg/share.svg'
+                    className='relative'
+                    alt='dele'
+                    width={20}
+                    height={20}
+                  />
+                </Button>
+              </div>
             </div>
           </div>
         </div>
 
-        <div className='relative flex justify-between items-center gap-4'>
+        <div className='relative hidden md:flex justify-between items-center gap-4'>
           {scrollPosition > 0 && (
             <Button
               onClick={handleScrollLeft}

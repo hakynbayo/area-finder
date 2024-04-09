@@ -30,17 +30,23 @@ const NavBar = ({ isHome }: { isHome?: boolean }) => {
   if (isMobile) {
     return (
       <>
-        <div className='fixed top-0 z-20 flex bg-[#F2F6FD] w-full items-center py-2 justify-between px-6'>
-          <div className='relative h-[34px] w-[80%] lg:w-[80%] z-10 flex items-center'>
-            <Link href='/' className='block w-max py-4 text-2xl px-6'>
-              <Logo className='' variant='white' />
-            </Link>
-
-            <Search placeholder='Enter an Address' />
+        <div className='fixed top-0 z-20 flex flex-col w-full py-2 bg-white justify-between px-2 md:px-6'>
+          <div className='relative w-full z-10 flex justify-between items-center'>
+            <div>
+              <Link
+                href='/'
+                className='block w-max py-4 text-2xl sm:px-2 md:px-6'
+              >
+                <Logo className='' variant='white' />
+              </Link>
+            </div>
+            <div className='relative'>
+              <BiMenuAltRight onClick={toggleModal} size={44} />
+            </div>
           </div>
 
           <div className='relative'>
-            <BiMenuAltRight onClick={toggleModal} size={44} />
+            <Search placeholder='Enter an Address' />
           </div>
         </div>
         <GenModal isOpen={open} handleCloseModal={toggleModal}>
@@ -59,7 +65,7 @@ const NavBar = ({ isHome }: { isHome?: boolean }) => {
   }
 
   return (
-    <nav className='fixed top-0  z-10 mb-10 flex w-full items-center justify-between bg-[#F2F6FD] px-6 py-4 backdrop-blur-lg backdrop-filter sm:px-10 lg:px-16 xl:px-24'>
+    <nav className='fixed top-0  z-10 mb-10 flex w-full items-center justify-between bg-[#F2F6FD] px-6 py-4 backdrop-blur-lg backdrop-filter sm:px-0 lg:px-16 xl:px-24'>
       <div className='relative h-[56px] w-[80%] flex items-center'>
         <Link href='/' className='block w-max py-4 text-2xl px-6'>
           <Logo className='' variant='white' />
@@ -74,7 +80,9 @@ const NavBar = ({ isHome }: { isHome?: boolean }) => {
       )}
 
       <div className='relative flex items-center gap-2'>
-        <p className='text-black text-base font-medium'>Welcome!</p>
+        <p className='text-black text-base font-medium hidden xl:flex'>
+          Welcome!
+        </p>
         <Button
           onClick={toggleProfileModal}
           className='bg-transparent shadow-none border-none hover:bg-transparent hover:shadow-none hover:border-none'

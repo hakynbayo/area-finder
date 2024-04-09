@@ -6,7 +6,7 @@ interface TagItemProps {
 
 const TagItem: React.FC<TagItemProps> = ({ text }) => {
   return (
-    <div className='border bg-white px-2 rounded-md text-sm text-black whitespace-nowrap'>
+    <div className='border bg-[#FBFAFC] px-2 rounded-md text-sm text-black whitespace-nowrap'>
       {text}
     </div>
   );

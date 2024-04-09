@@ -67,7 +67,7 @@ const Card = () => {
       </div>
       {/* Hide the div below when not expanded */}
       {isExpanded && (
-        <div className='lg:w-[630px] sm:w-full w-full h-[120px] md:h-[210px] relative bg-[#F3F7FE] border rounded-md lg:absolute sm:flex-row p-4 overflow-y-auto'>
+        <div className='lg:w-[630px] sm:w-full w-full h-[120px] lg:h-[210px]  bg-[#F3F7FE] border rounded-md lg:absolute sm:flex-row p-4 overflow-y-auto'>
           <div className='grid grid-cols-1 sm:grid-cols-5 gap-4 '>
             {amenities.map((amenity, index) => (
               <div

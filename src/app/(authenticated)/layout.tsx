@@ -4,8 +4,8 @@ import NavBar from '@/app/(authenticated)/home/_components/NavBar';
 
 const UnAuthenticationLayout = async ({ children }: PropsWithChildren) => {
   return (
-    <div className='layout_container'>
-      <div className='layout_container_width grid grid-cols-1 grid-rows-[auto_1fr]'>
+    <div className='layout_container '>
+      <div className='layout_container_width flex flex-col'>
         <div className=''>
           <NavBar />
         </div>

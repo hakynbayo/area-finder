@@ -106,7 +106,7 @@ const InputSearch = ({
 
       <Button
         type='submit'
-        className='w-[30%] flex justify-center items-center px-4 py-4 text-base font-medium text-white bg-blue rounded-lg hover:bg-blue/80 disabled:bg-gray-200 disabled:opacity-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue/50'
+        className='w-[50%] lg:w-[30%] flex justify-center items-center px-4 py-4 sm:p-2 md:p-4 text-base font-medium text-white bg-blue rounded-lg hover:bg-blue/80 disabled:bg-gray-200 disabled:opacity-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue/50'
         disabled={disabled || isSubmitting}
       >
         {isSubmitting ? <ImSpinner2 className='animate-spin mr-2' /> : null}

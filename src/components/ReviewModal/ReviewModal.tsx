@@ -60,10 +60,10 @@ const Review: React.FC<ResponseProps> = ({ handleCloseModal, isOpen }) => {
         ariaHideApp={false}
         className='h-max w-[90%] flex-shrink-0 rounded-md bg-[#FAFCFD] border-light-blue border drop-shadow-2xl md:h-max lg:w-[695px]'
       >
-        <div className='w-full rounded-xl py-4 px-8 flex flex-col gap-4'>
+        <div className='w-full rounded-xl py-4 px-2 md:px-8  flex flex-col gap-4'>
           <div className='flex flex-col gap-2'>
             <h1 className='text-center text-lg font-medium'>Review Location</h1>
-            <h3 className='text-xl font-medium'>{UrlParams}</h3>
+            <h3 className='text-base md:text-xl font-medium'>{UrlParams}</h3>
           </div>
 
           <div>
