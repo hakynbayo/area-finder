@@ -1,6 +1,5 @@
 import { useFormik } from 'formik';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { useState } from 'react';
 import { ImSpinner2 } from 'react-icons/im';
 
 import { cn } from '@/lib/utils';
@@ -32,7 +31,6 @@ const InputSearch = ({
   updateQuery,
   ...rest
 }: InputSearchProp) => {
-  const [isSubmitting, setIsSubmitting] = useState(false);
   const router = useRouter();
   const searchParams = useSearchParams();
 
@@ -42,31 +40,22 @@ const InputSearch = ({
       search: searchParams.get('search') || '',
     },
     validationSchema,
-    onSubmit: async (values) => {
-      setIsSubmitting(true);
-
-      if (updateQuery) {
-        const params = new URLSearchParams(searchParams);
-        if (values.search) {
-          params.set('search', values.search);
-        } else {
-          params.delete('search');
-        }
-
-        router.replace(`?${params.toString()}`, { scroll: false });
-        setIsSubmitting(false);
+    onSubmit: (values) => {
+      if (!values.search) {
+        // Return if the input field is empty
         return;
       }
 
-      const params = new URLSearchParams();
-      if (values.search) {
+      if (updateQuery) {
+        const params = new URLSearchParams(searchParams);
         params.set('search', values.search);
+        router.replace(`?${params.toString()}`, { scroll: false });
       } else {
-        params.delete('search');
+        const params = new URLSearchParams();
+        params.set('search', values.search);
+        router.replace(`?${params.toString()}`, { scroll: false });
+        router.push(`/home?${params.toString()}`);
       }
-
-      await router.push(`/home?${params.toString()}`);
-      setIsSubmitting(false);
     },
   });
 
@@ -89,7 +78,7 @@ const InputSearch = ({
         id='search'
         onChange={formik.handleChange}
         className={cn(
-          'border border-light-blue text-secondary-black w-full rounded-lg bg-[#3366FF] bg-[url(https://api.iconify.design/uil/search.svg)] bg-[top_50%_left_1rem] bg-no-repeat px-2 py-2 pl-10 text-xs shadow-none outline-none ring-0  placeholder:text-xs placeholder:text-[#484851] focus:ring-0 sm:pl-[3.5rem] md:px-4 md:pl-12 md:text-sm md:placeholder:text-sm lg:text-base lg:placeholder:text-base',
+          'border border-light-blue text-secondary-black w-full rounded-lg bg-[#3366FF] bg-[url(https://api.iconify.design/uil/search.svg)] bg-[top_50%_left_1rem] bg-no-repeat px-2 py-2 pl-10 text-xs shadow-none outline-none ring-0  placeholder:text-xs placeholder:text-[#484851] focus:ring-0 sm:pl-[3.5rem] md:px-4 md:pl-12 md:text-sm md:placeholder:text-sm lg:text-base lg:placeholder:text-base',
           [className && className],
           [inputClassName && inputClassName],
         )}
@@ -106,10 +95,9 @@ const InputSearch = ({
 
       <Button
         type='submit'
-        className='w-[50%] lg:w-[30%] flex justify-center items-center px-4 py-4 sm:p-2 md:p-4 text-base font-medium text-white bg-blue rounded-lg hover:bg-blue/80 disabled:bg-gray-200 disabled:opacity-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue/50'
-        disabled={disabled || isSubmitting}
+        className='w-[30%] flex justify-center items-center px-4 py-4 text-base font-medium text-white bg-blue rounded-lg hover:bg-blue/80 disabled:bg-gray-200 disabled:border-0 disabled:opacity-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue/50'
+        disabled={isLoading || !formik.values.search} // Disable button if loading or input field is empty
       >
-        {isSubmitting ? <ImSpinner2 className='animate-spin mr-2' /> : null}
         Search
       </Button>
     </form>

@@ -40,6 +40,11 @@ const InputSearch = ({
     },
     validationSchema,
     onSubmit: (values) => {
+      if (!values.search) {
+        // Return if the input field is empty
+        return;
+      }
+
       if (updateQuery) {
         const params = new URLSearchParams(searchParams);
         if (values.search) {
@@ -90,7 +95,7 @@ const InputSearch = ({
           id='search'
           onChange={formik.handleChange}
           className={cn(
-            'border border-[#D4DCF1] text-secondary-black w-full rounded-lg bg-[#3366FF] bg-[url(https://api.iconify.design/uil/search.svg)] bg-[top_50%_left_1rem] bg-no-repeat px-2 py-2 sm:py-4 pl-10 text-xs shadow-none outline-none ring-0 placeholder:text-xs placeholder:text-black focus:ring-0 sm:pl-[3.5rem] md:px-4 md:pl-12 md:text-sm md:placeholder:text-sm lg:text-base lg:placeholder:text-base',
+            'border border-[#D4DCF1] text-secondary-black w-full rounded-lg bg-[#3366FF] bg-[url(https://api.iconify.design/uil/search.svg)] bg-[top_50%_left_1rem] bg-no-repeat px-2 py-2 sm:py-4 pl-10 text-xs shadow-none outline-none ring-0 placeholder:text-xs placeholder:text-black focus:ring-0 sm:pl-[3.5rem] md:px-4 md:pl-12 md:text-sm md:placeholder:text-sm lg:text-base lg:placeholder:text-base',
             [className && className],
             [inputClassName && inputClassName],
           )}
@@ -102,6 +107,7 @@ const InputSearch = ({
           <button
             type='button'
             className='absolute right-4 top-0 bottom-0 flex items-center px-2 text-gray-400 hover:text-gray-600'
+            disabled={isLoading} // Disable button if loading
             onClick={handleClearSearch}
           >
             <MdOutlineClear />
