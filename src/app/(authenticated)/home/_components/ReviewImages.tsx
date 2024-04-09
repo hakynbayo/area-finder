@@ -6,9 +6,6 @@ const images = [
   '/svg/image2.svg',
   '/svg/image3.svg',
   '/svg/image4.svg',
-  '/svg/image4.svg',
-  '/svg/image4.svg',
-  '/svg/image4.svg',
 ];
 
 const ReviewImages: React.FC = () => {
