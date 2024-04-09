@@ -48,14 +48,27 @@ const InputSearch = ({
 
       if (updateQuery) {
         const params = new URLSearchParams(searchParams);
-        params.set('search', values.search);
+        if (values.search) {
+          params.set('search', values.search);
+        } else {
+          params.delete('search');
+        }
+
         router.replace(`?${params.toString()}`, { scroll: false });
-      } else {
-        const params = new URLSearchParams();
-        params.set('search', values.search);
-        router.replace(`?${params.toString()}`, { scroll: false });
-        router.push(`/home?${params.toString()}`);
+        return;
       }
+
+      const params = new URLSearchParams();
+      if (values.search) {
+        params.set('search', values.search);
+      } else {
+        params.delete('search');
+      }
+
+      router.replace(`?${params.toString()}`, {
+        scroll: false,
+      });
+      router.push(`/home?${params.toString()}`);
     },
   });
 
